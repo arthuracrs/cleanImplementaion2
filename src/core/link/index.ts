@@ -1,7 +1,8 @@
 export * from './entities/link/Link'
 
-export * from './ports/createLinkRepository'
-export * from './ports/loadLinkRepository'
+export * from './ports/ICreateLinkRepository'
+export * from './ports/ILoadLinkRepository'
 
 export * from './useCases/createLink/useCase'
 export * from './useCases/loadLink/useCase'
+export * from './useCases/createLink/inputPort'

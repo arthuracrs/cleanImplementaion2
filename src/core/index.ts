@@ -1,1 +1,1 @@
-export * from './link'
+export * as core from './link'

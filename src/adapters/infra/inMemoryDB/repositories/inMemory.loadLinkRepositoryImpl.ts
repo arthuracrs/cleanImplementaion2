@@ -1,5 +1,5 @@
-import { ILoadLinkRepository } from '../../core/link/ports/loadLinkRepository';
-import { InMemoryDB } from '../infra/inMemoryDB/db';
+import { ILoadLinkRepository } from '../../../../core/link/ports/ILoadLinkRepository';
+import { InMemoryDB } from '../db';
 
 export class InMemoryLoadLinkRepository implements ILoadLinkRepository {
     private linksKey = 'links';
@@ -17,7 +17,7 @@ export class InMemoryLoadLinkRepository implements ILoadLinkRepository {
         }
 
         for(let i = 0; i < links.length; i++){
-            if(links[i].id == id) return links[i]
+            if(links[i].linkId == id) return links[i]
         }
         
 

@@ -10,4 +10,8 @@ export class InMemoryDB {
     load(key: string): any {
         return this.memory[key];
     }
+
+    print(){
+        console.log(this.memory)
+    }
 }
