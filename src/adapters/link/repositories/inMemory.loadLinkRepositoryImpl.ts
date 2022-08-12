@@ -1,5 +1,5 @@
-import { ILoadLinkRepository } from '../../../../core/link/ports/ILoadLinkRepository';
-import { InMemoryDB } from '../db';
+import { ILoadLinkRepository } from '../../../core/link/ports/ILoadLinkRepository';
+import { InMemoryDB } from '../../../infra/inMemoryDB/db';
 
 export class InMemoryLoadLinkRepository implements ILoadLinkRepository {
     private linksKey = 'links';
