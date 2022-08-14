@@ -2,7 +2,9 @@
     "execMap": {
         "ts": "ts-node"
     },
+    "ext": "ts",
     "events": {
         "restart": "cls"
-    }
+    },
+    "exec": "ts-node ./index.ts"
 }

@@ -1,6 +1,6 @@
 import { Link } from "../../../core/link/entities/link/Link";
 import { ICreateLinkRepository } from "../../../core/link/ports/ICreateLinkRepository";
-import { InMemoryDB } from "../../../infra/inMemoryDB/db";
+import { InMemoryDB } from "../../infra/inMemoryDB/db";
 
 export class InMemoryCreateLinkRepository implements ICreateLinkRepository {
     private linksKey = 'links' 

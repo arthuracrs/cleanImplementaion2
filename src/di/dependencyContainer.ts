@@ -5,7 +5,7 @@ import {
     InMemoryLoadLinkRepository
 } from '../adapters/link/repositories'
 
-import { InMemoryDB } from '../infra/inMemoryDB/db'
+import { InMemoryDB } from '../adapters/infra/inMemoryDB/db'
 
 const db = new InMemoryDB()
 
