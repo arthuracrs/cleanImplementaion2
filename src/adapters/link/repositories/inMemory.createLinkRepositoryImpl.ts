@@ -8,8 +8,8 @@ export class InMemoryCreateLinkRepository implements ICreateLinkRepository {
 
     constructor(private db: InMemoryDB) { }
 
-    save(link: CreateLinkInputPort): Link {
-
+    save(link: any): Link {
+        
         const links = (this.db.load(this.linksKey)).push(link)
 
         return link;
