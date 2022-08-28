@@ -1,0 +1,1 @@
+export * as adapters from './link/repositories'

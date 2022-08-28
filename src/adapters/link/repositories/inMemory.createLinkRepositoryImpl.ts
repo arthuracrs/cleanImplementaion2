@@ -1,5 +1,6 @@
-import { Link } from "../../../core/link/entities/link/Link";
+import { Link } from "../../../core/entities/link/Link";
 import { ICreateLinkRepository } from "../../../core/link/ports/ICreateLinkRepository";
+import { CreateLinkInputPort } from "../../../core/link/useCases/createLink/inputPort";
 import { InMemoryDB } from "../../infra/inMemoryDB/db";
 
 export class InMemoryCreateLinkRepository implements ICreateLinkRepository {
@@ -7,13 +8,10 @@ export class InMemoryCreateLinkRepository implements ICreateLinkRepository {
 
     constructor(private db: InMemoryDB) { }
 
-    save(link: Link): Link | boolean {
-        if (this.db.load(this.linksKey) == undefined){
-            this.db.save(this.linksKey, [])
-        }
+    save(link: CreateLinkInputPort): Link {
 
         const links = (this.db.load(this.linksKey)).push(link)
 
-        return true;
+        return link;
     }
 }

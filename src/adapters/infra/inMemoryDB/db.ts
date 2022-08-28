@@ -8,10 +8,13 @@ export class InMemoryDB {
     }
 
     load(key: string): any {
+        if (this.memory[key] == undefined)
+            this.memory[key] = []
+
         return this.memory[key];
     }
 
-    print(){
+    print() {
         console.log(this.memory)
     }
 }

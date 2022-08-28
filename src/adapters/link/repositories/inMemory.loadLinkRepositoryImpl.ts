@@ -1,7 +1,7 @@
-import { ILoadLinkRepository } from '../../../core/link/ports/ILoadLinkRepository';
+import { ILoadLinkByIdRepository } from '../../../core/link/ports/ILoadLinkById.repository';
 import { InMemoryDB } from '../../infra/inMemoryDB/db';
 
-export class InMemoryLoadLinkRepository implements ILoadLinkRepository {
+export class InMemoryLoadLinkRepository implements ILoadLinkByIdRepository {
     private linksKey = 'links';
 
     constructor(private db : InMemoryDB){}
@@ -12,15 +12,14 @@ export class InMemoryLoadLinkRepository implements ILoadLinkRepository {
 
         if (links == undefined){
             this.db.save(this.linksKey, [])
-
-            return false;
+            return 'vazio';
         }
 
         for(let i = 0; i < links.length; i++){
-            if(links[i].linkId == id) return links[i]
+            if(links[i].idLink == id) return links[i]
         }
         
 
-        return false
+        return 'não achado'
     }
 }

@@ -2,17 +2,26 @@ import { core } from '../core'
 
 import {
     InMemoryCreateLinkRepository,
-    InMemoryLoadLinkRepository
+    InMemoryLoadLinkRepository,
+    InMemoryGetRedirectUrl
 } from '../adapters/link/repositories'
 
 import { InMemoryDB } from '../adapters/infra/inMemoryDB/db'
 
-const db = new InMemoryDB()
+export const containerFactory = () => {
+    const db = new InMemoryDB()
 
-const createLinkRepository = new InMemoryCreateLinkRepository(db)
-const loadLinkRepitory = new InMemoryLoadLinkRepository(db)
+    const createLinkRepository = new InMemoryCreateLinkRepository(db)
+    const loadLinkRepository = new InMemoryLoadLinkRepository(db)
+    const getRedirectUrl = new InMemoryGetRedirectUrl(db)
 
-export const container = {
-    createLink: new core.CreateLink(createLinkRepository),
-    loadLink: new core.LoadLink(loadLinkRepitory)
+    const container = {
+        createLinkInputPort: core.CreateLinkInputPort,
+        getRedirectUrl: new core.GetRedirectLink(getRedirectUrl),
+        createLink: new core.CreateLink(createLinkRepository),
+        LoadLinkById: new core.LoadLinkById(loadLinkRepository)
+    }
+
+    return container
 }
+
