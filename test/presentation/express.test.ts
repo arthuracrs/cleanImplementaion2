@@ -3,6 +3,8 @@ import { agent } from 'supertest'
 
 import { app } from '../../src/presentation/http/express/express'
 
+const prefix = 'a'
+
 describe("Express Test", () => {
     test("Route GET /hello", () => {
         agent(app)
@@ -14,8 +16,7 @@ describe("Express Test", () => {
             });
     })
 
-    test("Route POST /a/createLink", async () => {
-        const prefix = 'a'
+    test("Route POST /a/createLink - check creation", async () => {
         const requestBody = { originalLink: 'a', redirectLink: 'http://instagram.com/arthurc_fom' }
         const res = await agent(app)
             .post(`/${prefix}/createLink`)
@@ -30,7 +31,6 @@ describe("Express Test", () => {
     })
 
     test("Route GET / - checks redirect", async () => {
-        const prefix = 'a'
         const requestBody = { originalLink: 'a', redirectLink: 'http://instagram.com/arthurc_fom' }
         await agent(app)
             .post(`/${prefix}/createLink`)
